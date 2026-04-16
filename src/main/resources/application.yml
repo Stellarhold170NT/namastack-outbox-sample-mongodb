@@ -1,0 +1,37 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/outbox_demo
+      # Quan trọng: Cần Replica Set cho Transactions
+      auto-index-creation: true
+
+namastack:
+  outbox:
+    enabled: true
+    # Quét MongoDB mỗi 2 giây
+    poll-interval: 2000
+    batch-size: 10
+    
+    # Cấu hình lưu trữ MongoDB
+    mongodb:
+      enabled: true
+      # Tên collection mặc định: outbox_records
+      
+    processing:
+      # Dừng xử lý khi gặp bản ghi lỗi (để bảo toàn thứ tự FIFO nghiêm ngặt)
+      stop-on-first-failure: true
+      delete-completed-records: false
+      
+    multicaster:
+      # Bật tự động intercept ApplicationEventPublisher
+      enabled: true
+      publish-after-save: true
+      
+    retry:
+      policy: exponential
+      max-retries: 10
+    
+logging:
+  level:
+    io.namastack.outbox: DEBUG
+    org.springframework.data.mongodb: DEBUG

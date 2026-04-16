@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:8.0
+    container_name: outbox-mongodb
+    ports:
+      - "27017:27017"
+    command: ["--replSet", "rs0", "--bind_ip_all"]
+    healthcheck:
+      # Sửa lỗi: Chỉ kiểm tra ping của database thay vì kiểm tra trạng thái rs.status()
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - mongodb_data:/data/db
+
+  # Container này khởi tạo Replica Set khi server đã ping được
+  mongodb-setup:
+    image: mongo:8.0
+    container_name: outbox-mongodb-setup
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    # Lệnh này sẽ chạy rs.initiate() một cách an toàn
+    entrypoint: [ "mongosh", "--host", "mongodb:27017", "--eval", "rs.initiate({_id: 'rs0', members: [{_id: 0, host: 'localhost:27017'}]}) || true" ]
+
+volumes:
+  mongodb_data:
