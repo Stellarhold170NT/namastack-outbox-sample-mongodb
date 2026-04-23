@@ -26,7 +26,7 @@ Add the following temporary dependency (for development) to your `pom.xml`:
 <dependency>
     <groupId>io.github.stellarhold170nt</groupId>
     <artifactId>namastack-outbox-starter-mongodb</artifactId>
-    <version>1.4.0-SNAPSHOT</version>
+    <version>1.4.0</version>
 </dependency>
 ```
 
