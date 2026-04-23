@@ -13,6 +13,23 @@ This command will start MongoDB and automatically initialize the required Replic
 
 The application is configured in src/main/resources/application.yml to connect to mongodb://localhost:27017/outbox_demo.
 
+### Important Notes
+
+1. **MongoDB Replica Set**: MongoDB **must** be configured as a Replica Set to support transactions, which are required for the Outbox pattern to ensure atomicity between business data and outbox events.
+2. **Mandatory Annotation**: You must add `@EnableTransactionManagement(proxyTargetClass = true)` to your `@SpringBootApplication` class to ensure Spring correctly proxies your `@Transactional` services and detects the outbox transaction manager.
+
+## Dependency Declaration
+
+Add the following temporary dependency (for development) to your `pom.xml`:
+
+```xml
+<dependency>
+    <groupId>io.github.stellarhold170nt</groupId>
+    <artifactId>namastack-outbox-starter-mongodb</artifactId>
+    <version>1.4.0-SNAPSHOT</version>
+</dependency>
+```
+
 ## Running the Application
 
 Build and run using Maven:
