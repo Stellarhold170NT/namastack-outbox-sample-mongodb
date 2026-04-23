@@ -16,7 +16,7 @@ The application is configured in src/main/resources/application.yml to connect t
 ### Important Notes
 
 1. **MongoDB Replica Set**: MongoDB **must** be configured as a Replica Set to support transactions, which are required for the Outbox pattern to ensure atomicity between business data and outbox events.
-2. **Mandatory Annotation**: You must add `@EnableTransactionManagement(proxyTargetClass = true)` to your `@SpringBootApplication` class to ensure Spring correctly proxies your `@Transactional` services and detects the outbox transaction manager.
+2. **Mandatory Annotation**: You must add `@EnableTransactionManagement` to your `@SpringBootApplication` class to ensure Spring correctly proxies your `@Transactional` services and detects the outbox transaction manager.
 
 ## Dependency Declaration
 
