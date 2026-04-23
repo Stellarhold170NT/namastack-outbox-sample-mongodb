@@ -30,12 +30,18 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- Namastack Outbox MongoDB Starter -->
+        <!-- Namastack Outbox MongoDB Starter Temporary -->
         <dependency>
-            <groupId>io.namastack</groupId>
+            <groupId>io.github.stellarhold170nt</groupId>
             <artifactId>namastack-outbox-starter-mongodb</artifactId>
-            <version>${namastack-outbox.version}</version>
+            <version>1.4.0</version>
         </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>io.namastack</groupId>-->
+<!--            <artifactId>namastack-outbox-starter-mongodb</artifactId>-->
+<!--            <version>1.4.0-SNAPSHOT</version>-->
+<!--        </dependency>-->
 
         <!-- Monitoring & Utils -->
         <dependency>

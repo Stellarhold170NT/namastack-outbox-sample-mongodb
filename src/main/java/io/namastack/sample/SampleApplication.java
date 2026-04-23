@@ -4,8 +4,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
 @SpringBootApplication
-@EnableScheduling // Bắt buộc để Outbox Scheduler có thể chạy polling
+@EnableScheduling
+@EnableTransactionManagement(proxyTargetClass = true)
 public class SampleApplication {
     public static void main(String[] args) {
         SpringApplication.run(SampleApplication.class, args);
