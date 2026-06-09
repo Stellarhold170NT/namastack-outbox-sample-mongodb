@@ -21,14 +21,14 @@ public class OrderService {
     @Transactional
     public String createOrder(String customerId, BigDecimal amount, boolean fail) {
         String orderId = UUID.randomUUID().toString();
-        log.info("Tạo đơn hàng [{}]. Trạng thái fail demo: {}", orderId, fail);
+        log.info("Creating order [{}]. Fail demo flag: {}", orderId, fail);
 
         OrderCreatedEvent event = new OrderCreatedEvent(
             orderId,
             customerId,
-            "Khách hàng Demo",
+            "Demo Customer",
             amount,
-            "Địa chỉ ví dụ",
+            "Demo Address",
             Collections.emptyList(),
             fail
         );

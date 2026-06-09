@@ -18,7 +18,7 @@ public record OrderCreatedEvent(
     BigDecimal totalAmount,
     String shippingAddress,
     List<ItemInfo> items,
-    Boolean fail // Trường dùng để demo lỗi
+    Boolean fail // Used for failure demo
 ) {
     public record ItemInfo(String productId, String productName, int quantity, BigDecimal price) {}
 }
