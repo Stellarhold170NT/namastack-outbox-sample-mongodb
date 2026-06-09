@@ -1,6 +1,6 @@
-# Namastack Outbox MongoDB Sample
+# Outbox Pattern Sample with MongoDB (Custom Implementation)
 
-This is a sample application demonstrating the Outbox pattern using MongoDB.
+This is a sample application demonstrating the Outbox pattern using a custom implementation with MongoDB.
 
 ## Prerequisites
 
@@ -16,33 +16,24 @@ The application is configured in src/main/resources/application.yml to connect t
 ### Important Notes
 
 1. **MongoDB Replica Set**: MongoDB **must** be configured as a Replica Set to support transactions, which are required for the Outbox pattern to ensure atomicity between business data and outbox events.
-2. **Mandatory Annotation**: You must add `@EnableTransactionManagement` to your `@SpringBootApplication` class to ensure Spring correctly proxies your `@Transactional` services and detects the outbox transaction manager.
-
-## Dependency Declaration
-
-Add the following temporary dependency (for development) to your `pom.xml`:
-
-```xml
-<dependency>
-    <groupId>io.github.stellarhold170nt</groupId>
-    <artifactId>namastack-outbox-starter-mongodb</artifactId>
-    <version>1.4.0</version>
-</dependency>
-```
 
 ## Running the Application
 
 Build and run using Maven:
+```bash
 mvn clean spring-boot:run
+```
 
 ## Testing Endpoints
 
 ### 1. Create a successful order
-This will save the order, publish an outbox event, and the scheduler will process it.
 
+```bash
 curl -X POST "http://localhost:8080/orders?customerId=user1&amount=100.0"
+```
 
-### 2. Create a failed order
-This demonstrates the retry policy. The outbox handler is programmed to fail, and the scheduler will retry based on the exponential policy.
+### 2. Create a failed order (demonstrates retry)
 
+```bash
 curl -X POST "http://localhost:8080/orders/failed?customerId=user1&amount=100.0"
+```

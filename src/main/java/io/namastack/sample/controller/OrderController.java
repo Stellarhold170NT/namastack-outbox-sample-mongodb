@@ -16,17 +16,15 @@ public class OrderController {
 
     private final OrderService orderService;
 
-    // Endpoint thành công bình thường
     @PostMapping
     public String createOrder(@RequestParam String customerId, @RequestParam BigDecimal amount) {
         String id = orderService.createOrder(customerId, amount, false);
-        return "Order thành công (Sẽ xử lý trong Outbox): " + id;
+        return "Order created (will be processed via Outbox): " + id;
     }
 
-    // Endpoint để demo lỗi
     @PostMapping("/failed")
     public String createFailedOrder(@RequestParam String customerId, @RequestParam BigDecimal amount) {
         String id = orderService.createOrder(customerId, amount, true);
-        return "Order lỗi (Sẽ gây Exception trong Outbox Handler để Retry): " + id;
+        return "Order with simulated failure (will retry via Outbox): " + id;
     }
 }
