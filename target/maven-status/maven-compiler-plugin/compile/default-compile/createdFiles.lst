@@ -1,6 +1,0 @@
-io\namastack\sample\SampleApplication.class
-io\namastack\sample\handler\OrderOutboxHandler.class
-io\namastack\sample\event\OrderCreatedEvent$ItemInfo.class
-io\namastack\sample\service\OrderService.class
-io\namastack\sample\event\OrderCreatedEvent.class
-io\namastack\sample\controller\OrderController.class

@@ -1,5 +1,0 @@
-E:\nt170\trino-apply\namastack-outbox-sample-mongodb\src\main\java\io\namastack\sample\controller\OrderController.java
-E:\nt170\trino-apply\namastack-outbox-sample-mongodb\src\main\java\io\namastack\sample\event\OrderCreatedEvent.java
-E:\nt170\trino-apply\namastack-outbox-sample-mongodb\src\main\java\io\namastack\sample\handler\OrderOutboxHandler.java
-E:\nt170\trino-apply\namastack-outbox-sample-mongodb\src\main\java\io\namastack\sample\SampleApplication.java
-E:\nt170\trino-apply\namastack-outbox-sample-mongodb\src\main\java\io\namastack\sample\service\OrderService.java
