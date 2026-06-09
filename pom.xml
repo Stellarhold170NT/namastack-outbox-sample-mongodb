@@ -16,7 +16,7 @@
 
     <properties>
         <java.version>17</java.version>
-        <namastack-outbox.version>1.4.0-SNAPSHOT</namastack-outbox.version>
+        <namastack-outbox.version>1.6.0</namastack-outbox.version>
     </properties>
 
     <dependencies>
@@ -30,18 +30,12 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- Namastack Outbox MongoDB Starter Temporary -->
+        <!-- Namastack Outbox MongoDB Starter (Official) -->
         <dependency>
-            <groupId>io.github.stellarhold170nt</groupId>
+            <groupId>io.namastack</groupId>
             <artifactId>namastack-outbox-starter-mongodb</artifactId>
-            <version>1.4.0</version>
+            <version>${namastack-outbox.version}</version>
         </dependency>
-
-<!--        <dependency>-->
-<!--            <groupId>io.namastack</groupId>-->
-<!--            <artifactId>namastack-outbox-starter-mongodb</artifactId>-->
-<!--            <version>1.4.0-SNAPSHOT</version>-->
-<!--        </dependency>-->
 
         <!-- Monitoring & Utils -->
         <dependency>
@@ -77,10 +71,4 @@
         </plugins>
     </build>
 
-    <repositories>
-        <repository>
-            <id>maven-local</id>
-            <url>file://${user.home}/.m2/repository</url>
-        </repository>
-    </repositories>
 </project>
